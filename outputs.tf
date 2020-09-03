@@ -36,7 +36,7 @@ output "jenkins_instance_public_ip" {
 
 output "jenkins_instance_private_ip" {
   description = "The private IP of the Jenkins instance"
-  value       = google_compute_instance.jenkins.network_interface[0].access_config[0].nat_ip
+  value       = google_compute_instance.jenkins.network_ip
 }
 
 output "jenkins_instance_initial_password" {
