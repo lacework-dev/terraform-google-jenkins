@@ -39,6 +39,11 @@ output "jenkins_instance_private_ip" {
   value       = google_compute_instance.jenkins.network_interface.0.network_ip 
 }
 
+output "jenkins_instance_id" {
+  description = "The id of the Jenkins instance"
+  value       = google_compute_instance.jenkins.id
+}
+
 output "jenkins_instance_initial_password" {
   sensitive   = true
   description = "The initial password assigned to the Jenkins instance's `user` username"
