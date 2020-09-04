@@ -144,7 +144,7 @@ restart_jenkins() {
 install_jenkins_plugins() {
   echo "Installing plugins"
 
-  /opt/bitnami/java/bin/java -jar /tmp/jenkins-cli.jar -ssh -i /root/.ssh/id_rsa -s http://127.0.0.1/jenkins/ -user user install-plugin swarm google-compute-engine google-storage-plugin ansicolor
+  /opt/bitnami/java/bin/java -jar /tmp/jenkins-cli.jar -ssh -i /root/.ssh/id_rsa -s http://127.0.0.1/jenkins/ -user user install-plugin swarm google-compute-engine google-storage-plugin ansicolor github-oauth
 
   restart_jenkins
 }
