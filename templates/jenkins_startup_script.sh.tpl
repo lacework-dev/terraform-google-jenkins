@@ -304,7 +304,7 @@ touch_setup_complete_file() {
 }
 
 fix_jenkins_webapp() {
-  perl -pie 's/^RedirectMatch.*/RedirectMatch \^\/\$ https:\/\/${jenkins_fqdn}\/jenkins\//' /opt/bitnami/apps/jenkins/conf/httpd-app.conf
+  perl -pi -e 's/^RedirectMatch.*/RedirectMatch \^\/\$ https:\/\/${jenkins_fqdn}\/jenkins\//' /opt/bitnami/apps/jenkins/conf/httpd-app.conf
   restart_jenkins
 }
 
