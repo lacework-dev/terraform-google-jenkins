@@ -50,3 +50,7 @@ output "jenkins_instance_initial_password" {
   value       = local.jenkins_password
 }
 
+output "jenkins_fqdn" {
+  description = "The FQDN of your Jenkins instance"
+  value       = var.jenkins_fqdn
+}

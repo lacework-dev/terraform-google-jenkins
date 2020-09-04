@@ -144,7 +144,7 @@ restart_jenkins() {
 install_jenkins_plugins() {
   echo "Installing plugins"
 
-  /opt/bitnami/java/bin/java -jar /tmp/jenkins-cli.jar -ssh -i /root/.ssh/id_rsa -s http://127.0.0.1/jenkins/ -user user install-plugin swarm google-compute-engine google-storage-plugin
+  /opt/bitnami/java/bin/java -jar /tmp/jenkins-cli.jar -ssh -i /root/.ssh/id_rsa -s http://127.0.0.1/jenkins/ -user user install-plugin swarm google-compute-engine google-storage-plugin ansicolor
 
   restart_jenkins
 }
@@ -303,6 +303,11 @@ touch_setup_complete_file() {
   touch /tmp/instance_setup_complete
 }
 
+fix_jenkins_webapp() {
+  perl -pie 's/^RedirectMatch.*/RedirectMatch \^\/\$ https:\/\/${jenkins_fqdn}\/jenkins\//' /opt/bitnami/apps/jenkins/conf/httpd-app.conf
+  restart_jenkins
+}
+
 echo "Configuring Jenkins"
 
 enable_jenkins_cli
@@ -318,6 +323,7 @@ install_jenkins_plugins
 install_gce_credentials
 install_gce_plugin_configuration
 install_jenkins_jobs
+fix_jenkins_webapp
 
 uninstall_ssh_key
 disable_jenkins_cli

@@ -221,3 +221,7 @@ variable "jenkins_network_project_id" {
   description = "The project ID of the Jenkins network"
   default     = ""
 }
+
+variable "jenkins_fqdn" {
+  description = "The fully qualified domain name of your Jenkins instance. Example: jenkins.laceworkdemo.com"
+}

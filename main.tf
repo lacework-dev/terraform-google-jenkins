@@ -74,6 +74,7 @@ data "template_file" "jenkins_startup_script" {
   template = local.jenkins_startup_script_template
 
   vars = {
+    jenkins_fqdn                                   = var.jenkins_fqdn
     jenkins_username                               = local.jenkins_username
     jenkins_password                               = local.jenkins_password
     jenkins_workers_project_id                     = var.jenkins_workers_project_id
