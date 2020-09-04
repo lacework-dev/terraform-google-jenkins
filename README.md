@@ -1,4 +1,5 @@
-# Terraform Jenkins GCE Module
+# Lacework Jenkins GCE Module
+NOTE: This module is a fork of the [terraform-google-jenkins](https://github.com/terraform-google-modules/terraform-google-jenkins) module created by Google. It has been customized and enhanced to support SSL and custom DNS with a load balancer.
 
 This module handles the creation of a GCE instance running [Jenkins](https://jenkins.io/), configured to [run builds on Google Cloud](https://cloud.google.com/solutions/using-jenkins-for-distributed-builds-on-compute-engine). Creates an instance that can be logged into with the username `user` and the password `bitnami`.
 
