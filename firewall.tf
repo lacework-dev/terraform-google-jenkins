@@ -23,8 +23,9 @@ resource "google_compute_firewall" "jenkins-external-80" {
     protocol = "tcp"
     ports    = ["80"]
   }
-
-  source_ranges           = var.jenkins_instance_access_cidrs
+  
+  # Disabled this because we are using an HTTPS load balancer now
+  # source_ranges           = var.jenkins_instance_access_cidrs
   target_service_accounts = [google_service_account.jenkins.email]
 }
 
