@@ -109,6 +109,7 @@ resource "google_compute_instance" "jenkins" {
   name         = var.jenkins_instance_name
   machine_type = var.jenkins_instance_machine_type
   zone         = var.jenkins_instance_zone
+  allow_stopping_for_update = true
 
   tags = var.jenkins_instance_tags
 
