@@ -144,7 +144,7 @@ restart_jenkins() {
 install_jenkins_plugins() {
   echo "Installing plugins"
 
-  /opt/bitnami/java/bin/java -jar /tmp/jenkins-cli.jar -ssh -i /root/.ssh/id_rsa -s http://127.0.0.1/jenkins/ -user user install-plugin swarm google-compute-engine google-storage-plugin ansicolor github-oauth hashicorp-vault-plugin simple-theme-plugin blueocean
+  /opt/bitnami/java/bin/java -jar /tmp/jenkins-cli.jar -ssh -i /root/.ssh/id_rsa -s http://127.0.0.1/jenkins/ -user user install-plugin swarm google-compute-engine google-storage-plugin ansicolor github-oauth hashicorp-vault-plugin simple-theme-plugin
 
   restart_jenkins
 }
@@ -308,6 +308,10 @@ fix_jenkins_webapp() {
   restart_jenkins
 }
 
+add_git_symlink() {
+  ln -s /opt/bitnami/git/bin/git /usr/bin/git
+}
+
 echo "Configuring Jenkins"
 
 enable_jenkins_cli
@@ -327,6 +331,7 @@ fix_jenkins_webapp
 
 uninstall_ssh_key
 disable_jenkins_cli
+add_git_symlink
 
 touch_setup_complete_file
 
